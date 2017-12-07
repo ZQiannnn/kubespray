@@ -148,7 +148,7 @@ k8s_image_pull_policy: IfNotPresent
 dashboard_enabled: true
 
 # Monitoring apps for k8s
-efk_enabled: false
+efk_enabled: true
 
 # Helm deployment
 helm_enabled: false
@@ -179,3 +179,4 @@ local_volumes_enabled: false
 ## Supplementary addresses that can be added in kubernetes ssl keys.
 ## That can be usefull for example to setup a keepalived virtual IP
 # supplementary_addresses_in_ssl_keys: [10.0.0.1, 10.0.0.2, 10.0.0.3]
+dashboard_image_tag: v1.8.0
