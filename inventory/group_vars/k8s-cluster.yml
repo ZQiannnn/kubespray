@@ -180,4 +180,4 @@ local_volumes_enabled: false
 ## That can be usefull for example to setup a keepalived virtual IP
 # supplementary_addresses_in_ssl_keys: [10.0.0.1, 10.0.0.2, 10.0.0.3]
 
-authorization_modes: ['Node', 'RBAC', 'ABAC']
+authorization_modes: ['Node', 'RBAC']
