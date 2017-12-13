@@ -19,14 +19,14 @@
 
 # ------------------- Dashboard Secret ------------------- #
 
-#apiVersion: v1
-#kind: Secret
-#metadata:
-#  labels:
-#    k8s-app: kubernetes-dashboard
-#  name: kubernetes-dashboard-certs
-#  namespace: kube-system
-#type: Opaque
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    k8s-app: kubernetes-dashboard
+  name: kubernetes-dashboard-certs
+  namespace: kube-system
+type: Opaque
 
 ---
 # ------------------- Dashboard Service Account ------------------- #
@@ -119,16 +119,14 @@ spec:
         - containerPort: 8443
           protocol: TCP
         args:
-          - --auto-generate-certificates=false
-          - --tls-cert-file=tls.crt
-          - --tls-key-file=tls.key
+          - --auto-generate-certificates
           # Uncomment the following line to manually specify Kubernetes API server Host
           # If not specified, Dashboard will attempt to auto discover the API server and connect
           # to it. Uncomment only if the default does not work.
           # - --apiserver-host=http://my-address:port
         volumeMounts:
-        - mountPath: /certs
-          name: kubernetes-dashboard-certs
+        - name: kubernetes-dashboard-certs
+          mountPath: /certs
           # Create on-disk volume to store exec logs
         - mountPath: /tmp
           name: tmp-volume
@@ -167,4 +165,3 @@ spec:
       targetPort: 8443
   selector:
     k8s-app: kubernetes-dashboard
-#  type: NodePort
