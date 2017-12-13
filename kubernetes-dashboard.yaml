@@ -127,11 +127,11 @@ spec:
           # to it. Uncomment only if the default does not work.
           # - --apiserver-host=http://my-address:port
         volumeMounts:
-        - mountPath: "/certs"
-          name: "kubernetes-dashboard-certs"
+        - mountPath: /certs
+          name: kubernetes-dashboard-certs
           # Create on-disk volume to store exec logs
-        - mountPath: "/tmp"
-          name: "tmp-volume"
+        - mountPath: /tmp
+          name: tmp-volume
         livenessProbe:
           httpGet:
             scheme: HTTPS
