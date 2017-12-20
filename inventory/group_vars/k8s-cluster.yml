@@ -151,7 +151,7 @@ dashboard_enabled: false
 efk_enabled: true
 
 # Helm deployment
-helm_enabled: true
+helm_enabled: false
 
 # Istio deployment
 istio_enabled: false
