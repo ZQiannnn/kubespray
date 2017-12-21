@@ -25,7 +25,7 @@
   register: result
   until: result.status is defined and result.status == 200
   retries: 10
-  delay: 5
+  delay: 15
 
 - name: set etcd_secret_changed
   set_fact:
