@@ -57,19 +57,19 @@
     dest: "/etc/yum.repos.d/docker.repo"
   when: ansible_distribution in ["CentOS","RedHat"] and not is_atomic
 
-- name: ensure docker packages are installed
-  action: "{{ docker_package_info.pkg_mgr }}"
-  args:
-    pkg: "{{item.name}}"
-    force: "{{item.force|default(omit)}}"
-    state: present
-  register: docker_task_result
-  until: docker_task_result|succeeded
-  retries: 4
-  delay: "{{ retry_stagger | random + 3 }}"
-  with_items: "{{ docker_package_info.pkgs }}"
-  notify: restart docker
-  when: not (ansible_os_family in ["CoreOS", "Container Linux by CoreOS"] or is_atomic) and (docker_package_info.pkgs|length > 0)
+#- name: ensure docker packages are installed
+#  action: "{{ docker_package_info.pkg_mgr }}"
+#  args:
+#    pkg: "{{item.name}}"
+#    force: "{{item.force|default(omit)}}"
+#    state: present
+#  register: docker_task_result
+#  until: docker_task_result|succeeded
+#  retries: 4
+#  delay: "{{ retry_stagger | random + 3 }}"
+#  with_items: "{{ docker_package_info.pkgs }}"
+#  notify: restart docker
+#  when: not (ansible_os_family in ["CoreOS", "Container Linux by CoreOS"] or is_atomic) and (docker_package_info.pkgs|length > 0)
 
 - name: flush handlers so we can wait for docker to come up
   meta: flush_handlers
